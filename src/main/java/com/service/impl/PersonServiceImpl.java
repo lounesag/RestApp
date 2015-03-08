@@ -36,4 +36,11 @@ public class PersonServiceImpl implements PersonService {
 		personDao.deletePerson(id);
 	}
 
+	@Transactional
+	public Person getInfoPerson (String name, String firstName){
+		Person person = personDao.getPersonByName(name, firstName); 
+		return person;
+	}
+	
+
 }

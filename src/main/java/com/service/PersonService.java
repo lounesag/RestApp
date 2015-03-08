@@ -21,4 +21,6 @@ public interface PersonService {
      */
     public void deletePerson(int id);
 
+	public Person getInfoPerson (String name, String firstName);
+
 }

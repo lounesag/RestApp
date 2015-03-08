@@ -1,11 +1,23 @@
 package com.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Required;
+
+import com.annotations.Phone;
 
 
 @Entity
@@ -17,17 +29,36 @@ public class Person {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
+	@NotBlank
+	@NotEmpty
+	@Size(max=50)
 	private String firstname;
 
+	@NotBlank
+	@NotEmpty
+	@Size(max=50)
 	private String name;
-    
+
 	private String country;
-	
+
+	@NotBlank
+	@NotEmpty
+	@Size(max=1024)
 	private String adressString;
 
+	// TODO add annotations min and max
+//	@Min(value=18)
+//	@Max(value=99)
 	private int age;
 
-	public Person () {}
+	// TODO annotation phone @Phone
+	private String telephoneNumber; 
+
+	private Date created_at;
+
+	public Person () {
+		this.created_at = new Date();
+	}
 
 	public String getFirstname() {
 		return firstname;
@@ -62,5 +93,29 @@ public class Person {
 	public int getId() {
 		return id;
 	}
-	
+
+	public String getTelephoneNumber() {
+		return telephoneNumber;
+	}
+
+	public void setTelephoneNumber(String telephoneNumber) {
+		this.telephoneNumber = telephoneNumber;
+	}
+
+	public Date getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", firstname=" + firstname + ", name="
+				+ name + ", country=" + country + ", adressString="
+				+ adressString + ", age=" + age + ", telephoneNumber="
+				+ telephoneNumber + ", created_at=" + created_at + "]";
+	}
+
 }

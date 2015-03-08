@@ -6,19 +6,14 @@ import com.model.Person;
 
 public interface PersonDao {
 
-	 /*
-     * CREATE and UPDATE
-     */
     public void savePerson(Person person); // create and update
 
-    /*
-     * READ
-     */
-    public List<Person> listPersons();
-    public Person getPerson(int id);
+    public List<Person> listPersons(); //list of persons
 
-    /*
-     * DELETE
-     */
+    public Person getPerson(int id); 
+
     public void deletePerson(int id);
+
+    public Person getPersonByName(String name, String firstname);
+
 }

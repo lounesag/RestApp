@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.hibernate.Query;
+
 
 import com.dao.PersonDao;
 import com.model.Person;
@@ -20,6 +22,7 @@ public class PersonDaoImpl implements PersonDao {
 		getSession().merge(person);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Person> listPersons() {
 		return getSession().createCriteria(Person.class).list();
 	}
@@ -35,6 +38,21 @@ public class PersonDaoImpl implements PersonDao {
                 getSession().delete(person);
          }
 		
+	}
+
+	public Person getPersonByName(String name, String firstname) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Person t where t.name = :name and t.firstname = :firstname");
+		query.setParameter("name", name);
+		query.setParameter("firstname", firstname);
+		
+		if (query.list().isEmpty()) {
+			return null;
+		} 
+		if (query.list().size()!=1){
+			return null; // TODO add an exception > 2 
+		}
+		
+		return (Person) query.list().get(0);
 	}
 
 	private Session getSession() {

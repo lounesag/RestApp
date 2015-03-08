@@ -13,6 +13,9 @@
 		<hibernate-version>4.2.7.Final</hibernate-version>
 		<mysql-version>5.1.27</mysql-version>
 		<apache-connection-pooling-version>1.4</apache-connection-pooling-version>
+		<spring-security-version>3.1.3.RELEASE</spring-security-version>
+		<validation-api-version>1.0.0.GA</validation-api-version>
+		<validation-hibernate-version>5.1.3.Final</validation-hibernate-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -84,12 +87,42 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		 <!-- Jackson -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.2.3</version>
-        </dependency>
+		<!-- Jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring-security-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-security-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security-version}</version>
+		</dependency>
+
+		<!-- Validation annotation jsr303 -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validation-api-version}</version>
+		</dependency>
+		<!-- hibernate annotation -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${validation-hibernate-version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
