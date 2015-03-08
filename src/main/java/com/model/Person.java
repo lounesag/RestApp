@@ -56,6 +56,8 @@ public class Person {
 
 	private Date created_at;
 
+	private String fixTelephoneNumber;
+
 	public Person () {
 		this.created_at = new Date();
 	}
