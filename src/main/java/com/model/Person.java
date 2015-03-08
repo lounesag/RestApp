@@ -112,12 +112,21 @@ public class Person {
 		this.created_at = created_at;
 	}
 
+	public String getFixTelephoneNumber() {
+		return fixTelephoneNumber;
+	}
+
+	public void setFixTelephoneNumber(String fixTelephoneNumber) {
+		this.fixTelephoneNumber = fixTelephoneNumber;
+	}
+
 	@Override
 	public String toString() {
 		return "Person [id=" + id + ", firstname=" + firstname + ", name="
 				+ name + ", country=" + country + ", adressString="
 				+ adressString + ", age=" + age + ", telephoneNumber="
-				+ telephoneNumber + ", created_at=" + created_at + "]";
+				+ telephoneNumber + ", created_at=" + created_at
+				+ ", fixTelephoneNumber=" + fixTelephoneNumber + "]";
 	}
 
 }
